@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux';
 const CartButton = (props) => {
   const dispatch=useDispatch()
   const iscart=useSelector(state=>state.cart.iscart)
+  const item=useSelector(state=>state.cart.item)
   console.log(iscart,"iscart")
   const carthandler=()=>{
     dispatch(cartaction.cartopne())
@@ -11,7 +12,7 @@ const CartButton = (props) => {
   return (
     <button onClick={carthandler} className={classes.button}>
       <span>My Cart</span>
-      <span className={classes.badge}>1</span>
+      <span className={classes.badge}>{item.length}</span>
     </button>
   );
 };
