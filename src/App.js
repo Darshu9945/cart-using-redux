@@ -19,7 +19,8 @@ function App() {
         iscartitem=false
       return;
     }
-   dispatch(itemaction.notification({
+  else
+  { dispatch(itemaction.notification({
       title:"pendind",
       status:"sending"
     }))
@@ -38,8 +39,8 @@ axios.put("https://cart-using-redux-default-rtdb.firebaseio.com/cart.json",items
    
   }))
   setbagcolor("red")
-})
-  },[items]) 
+})}
+  },[items,dispatch]) 
 
 
 

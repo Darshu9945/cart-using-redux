@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 const cartSlice=createSlice({
     name:'cart',
@@ -13,7 +14,13 @@ const cartSlice=createSlice({
        state.iscart=!state.iscart
         },
        additemall(state,actions){
-             state.item=actions.payload
+        let items=[]
+        if(actions.payload){
+           items=actions.payload
+        }else{
+           items=[]
+        }
+             state.item=items
            },
 
         additem(state ,actions){
