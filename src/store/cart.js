@@ -12,22 +12,40 @@ const cartSlice=createSlice({
         cartopne(state){
        state.iscart=!state.iscart
         },
+       additemall(state,actions){
+             state.item=actions.payload
+           },
+
         additem(state ,actions){
             console.log(actions.payload,"kb")
           const finditem=state.item.find((i)=>i.title===actions.payload.title)
           if(finditem){
             console.log("kb")
-            state.quantity++
             state.Totalamount=state.Totalamount+actions.payload.price
+            finditem.quantity++
+            finditem.Totalprice=finditem.quantity*finditem.price
           }
           else{
             console.log("guru")
-            state.item.push(actions.payload)
+            const kb={...actions.payload,Totalprice:actions.payload.price}
+            state.item.push(kb)
             state.Totalamount=state.Totalamount+actions.payload.price
           }
         },
         removeitem(state,actions){
-
+            console.log(actions.payload,"kb")
+            const finditem=state.item.find((i)=>i.title===actions.payload.title)
+            if(finditem.quantity===1){
+                console.log("removed")
+                const removceditem=state.item.filter(i=>i.title!== actions.payload.title)
+                console.log(removceditem)
+                state.item=[...removceditem]
+            }
+            else{
+                state.Totalamount=state.Totalamount-actions.payload.price
+                finditem.quantity--
+            }
+            
         }
     }
 })

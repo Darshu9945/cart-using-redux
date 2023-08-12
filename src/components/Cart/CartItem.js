@@ -4,13 +4,20 @@ import { useDispatch,useSelector } from 'react-redux';
 const CartItem = (props) => {
   const { title, quantity, total, price } = props.item;
 const dispatch=useDispatch()
-
+const additemhandler=()=>{
+  console.log("clicked")
+  dispatch(cartaction.additem({
+    title,
+    price,
+    quantity,
+  }))
+}
   return (
     <li className={classes.item}>
       <header>
         <h3>{title}</h3>
         <div className={classes.price}>
-          ${total.toFixed(2)}{' '}
+          ${total}{' '}
           <span className={classes.itemprice}>(${price.toFixed(2)}/item)</span>
         </div>
       </header>
@@ -19,18 +26,13 @@ const dispatch=useDispatch()
           x <span>{quantity}</span>
         </div>
         <div className={classes.actions}>
-          <button onChange={()=>{
+          <button onClick={()=>{
             dispatch(cartaction.removeitem({
               title,
               price
             }))
           }}>-</button>
-          <button onChange={()=>{
-dispatch(cartaction.additem({
-  title:title,
-  price:price
-}))
-          }}>+</button>
+          <button onClick={ additemhandler}>+</button>
         </div>
       </div>
     </li>

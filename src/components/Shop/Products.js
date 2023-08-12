@@ -10,6 +10,25 @@ const Products = (props) => {
           title='Test'
           price={6}
           description='This is a first product - amazing!'
+          quantity={1}
+        />
+        <ProductItem
+          title='Copy'
+          price={10}
+          description='This is a first product - amazing!'
+          quantity={1}
+        />
+        <ProductItem
+          title='score'
+          price={12}
+          description='This is a first product - amazing!'
+          quantity={1}
+        />
+        <ProductItem
+          title='game'
+          price={8}
+          description='This is a first product - amazing!'
+          quantity={1}
         />
       </ul>
     </section>

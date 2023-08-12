@@ -6,6 +6,8 @@ const Cart = (props) => {
   const item=useSelector(state=>state.cart.item)
   const quantity=useSelector(state=>state.cart.quantity)
   const Totalamount=useSelector(state=>state.cart.Totalamount)
+console.log(item,"kbitem")
+ 
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
@@ -13,7 +15,8 @@ const Cart = (props) => {
         
        { item.map((i)=>{
        return <CartItem
-          item={{ title: i.title, quantity: quantity, total: Totalamount, price: i.price }}
+          item={{ title: i.title, quantity: i.quantity, total: i.Totalprice, price: i.price }}
+          key={i.title}
         />
 
        })       

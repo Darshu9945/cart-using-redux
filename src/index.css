@@ -29,3 +29,10 @@ button:active {
   border-color: #1ac5d1;
   color: white;
 }
+
+.status{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: aliceblue;
+}
